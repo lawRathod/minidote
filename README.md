@@ -1,6 +1,6 @@
-# materials
+# Materials
 
-
+This repository provides material around the exercises for the Programming Distributed Systems lecture.
 
 ## Getting started
 

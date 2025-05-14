@@ -68,6 +68,7 @@ defmodule Snippets do
     receive do
       :pong -> IO.inspect(:pong)
     end
+    q3e()
   end
   # Process F
   def q3f(pid_e) do

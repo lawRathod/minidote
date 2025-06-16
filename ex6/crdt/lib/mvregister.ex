@@ -9,11 +9,11 @@ defmodule MVReg do
         raise "not implemented"
     end
 
-    def set(element) do
+    def set(pid, element) do
         raise "not implemented"
     end
 
-    def update(update) do
+    def update(pid, update) do
         raise "not implemented"
     end
 

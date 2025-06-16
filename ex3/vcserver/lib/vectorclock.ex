@@ -16,7 +16,7 @@ defmodule Vectorclock do
 
     def leq(vectorclock1, vectorclock2) do
         # Def: for all i. vc1[i] <= vc2[i]
-        Enum.all?( vectorclock1, fn {k, v} -> v <= Map.get(vectorclock2 ,k) end)
+        Enum.all?( vectorclock1, fn {k, v} -> v <= Map.get(vectorclock2 ,k, 0) end)
     end
 
     def merge(vc1, vc2) do

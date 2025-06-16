@@ -27,7 +27,7 @@ defmodule Vectorclock do
     def leq(vc1, vc2) do
         # We need to only look at explicit keys of vc1
         # Are vc1's per key values less or equal to vc2's values?
-        Enum.all?(vc1, fn {key, value1} -> value1 <= Map.get(vc2,key) end)
+        Enum.all?(vc1, fn {key, value1} -> value1 <= Map.get(vc2,key,0) end)
     end
 
     # https://hexdocs.pm/elixir/1.12/Map.html#merge/3

@@ -11,17 +11,8 @@ defmodule CRDT do
   Naming pattern for CRDTs: <type>_<semantics>_<OB|SB>
 
   CRDT provided:
-  Counter_PN: PN-Counter aka Positive Negative Counter
-
-  CRDT examples:
-  flag_ew: Enable Wins Flag aka EW-Flag
-  set_aw: Add Wins Set aka AW-Set, previously OR-Set (Observed Remove Set)
-  flag_dw: Disable Wins Flag DW-Flag
-  set_go: Grow Only Set aka G-Set
-  set_rw: Remove Wins Set aka RW-Set
-  register_mv: MultiValue Register aka MV-Reg
-  map_go: Grow Only Map aka G-Map
-  map_rr: Recursive Resets Map aka RR-Map
+  Counter_PN_OP: PN-Counter aka Positive Negative Counter
+  Set_AW_OP: Add-wins set, to be completed, see ex6
   """
 
   # ToDo: Improve type spec

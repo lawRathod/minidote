@@ -18,7 +18,7 @@ defmodule Set_AW_OP do
     raise "implement"
   end
 
-  def value(state) when is_integer(pn_state) do
+  def value(state) when is_integer(state) do
     raise "implement"
   end
 

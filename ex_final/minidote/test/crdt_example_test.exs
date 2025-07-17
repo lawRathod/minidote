@@ -2,8 +2,7 @@ defmodule CrdtTest do
   use ExUnit.Case
 
   test "simple local counter" do
-    # Counter_PN_OB.t()
-    typ = :counter_pn_ob
+    typ = Counter_PN_OB
 
     # this data type is opaque
     # don't pattern match against the raw crdt type!

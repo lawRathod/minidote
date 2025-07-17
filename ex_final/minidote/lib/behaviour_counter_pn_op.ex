@@ -43,3 +43,4 @@ defmodule Counter_PN_OB do
   end
 
   def require_state_downstream(_) do false end
+end

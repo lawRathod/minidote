@@ -11,13 +11,13 @@ defmodule CRDT do
   Naming pattern for CRDTs: <type>_<semantics>_<OB|SB>
 
   CRDT provided:
-  Counter_PN_OP: PN-Counter aka Positive Negative Counter
-  Set_AW_OP: Add-wins set, to be completed, see ex6
+  Counter_PN_OB: PN-Counter aka Positive Negative Counter
+  Set_AW_OB: Add-wins set, to be completed, see ex6
   """
 
   # ToDo: Improve type spec
 
-  @type t :: Set_AW_OP.t() | Counter_PN_OB.t()
+  @type t :: Set_AW_OB.t() | Counter_PN_OB.t()
   @type crdt :: t
   @type update :: {atom, term}
   @type effect :: term
@@ -38,8 +38,8 @@ defmodule CRDT do
   # ToDo: Add new types as needed
   defguard valid?(type)
   when
-  (type == Counter_PN) or
-  (type == Set_AW_OP)
+  (type == Set_AW_OB) or
+  (type == Counter_PN_OB)
 
 
   def new(type) when valid?(type) do

@@ -6,6 +6,11 @@ defmodule Minidote.Server do
   The API documentation for `Minidote.Server`.
   """
 
+  def start_link(server_name) do
+    # if you need arguments for initialization, change here
+    GenServer.start_link(__MODULE__, [], name: server_name)
+  end
+
   @impl true
   def init(_) do
     # FIXME the link layer should be initialized in the broadcast layer

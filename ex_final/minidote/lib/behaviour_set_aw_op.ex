@@ -2,7 +2,7 @@ defmodule Set_AW_OP do
   @behaviour CRDT
 
   @moduledoc """
-  Documentation for `Set_AW_OP`.
+  Documentation for `Set_AW_OB`.
 
   An operation-based Observed-Remove Set CRDT.
 
@@ -12,7 +12,7 @@ defmodule Set_AW_OP do
   """
 
   # ToDo: Add type spec
-  @type t :: :set_aw_op
+  @type t :: :set_aw_ob
 
   def new() do
     raise "implement"

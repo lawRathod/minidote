@@ -3,6 +3,8 @@ defmodule LinkLayerDistr do
   require Logger
   # Callbacks
 
+  def start_link(group_name) do GenServer.start_link(__MODULE__, group_name) end
+
   @impl true
   def init(group_name) do
     # initially, try to connect with other erlang nodes

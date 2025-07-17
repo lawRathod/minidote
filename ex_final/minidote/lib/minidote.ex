@@ -12,10 +12,9 @@ defmodule Minidote do
   @type key :: {binary(), CRDT.t(), binary()}
   @type clock :: any() # your clock type here
 
-
   def start_link(server_name) do
     # if you need arguments for initialization, change here
-    GenServer.start_link(Minidote.Server, [], name: server_name)
+    Minidote.Server.start_link(server_name)
   end
 
   @spec read_objects([key()], clock()) :: {:ok, [{key(), CRDT.value()}], clock()} | {:error, any()}

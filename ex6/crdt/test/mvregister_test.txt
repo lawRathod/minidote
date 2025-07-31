@@ -1,8 +1,0 @@
-defmodule MVRegTest do
-  use ExUnit.Case
-  doctest MVReg
-
-  test "new/0" do
-    raise "Not yet implemented"
-  end
-end

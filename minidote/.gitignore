@@ -21,3 +21,6 @@ minidote-*.tar
 
 # Temporary files, for example, from tests.
 /tmp/
+
+# Persistence data files (DETS tables and disk logs)
+/data/

@@ -7,7 +7,7 @@ defmodule Minidote.Application do
 
   @impl true
   def start(_type, _args) do
-    Logger.notice("#{node()}: Starting minidote application")
+    # Wait a moment for the node name to be properly set
     # Change the secret Elixir cookie if given as environment variable:
     change_cookie()
 

@@ -32,7 +32,8 @@ defmodule CrdtTest do
     # this downstream effect should be broadcasted to all nodes
     # we assume the downstream effect arrived locally
     # to generate a new value, we apply the downstream effect to the current state
-    {:ok, counter_crdt} = CRDT.update(typ, downstream, counter_crdt) #local state!
+    # local state!
+    {:ok, counter_crdt} = CRDT.update(typ, downstream, counter_crdt)
 
     # we have overwritten the old state
     # to get the new value, use value again
@@ -41,5 +42,4 @@ defmodule CrdtTest do
 
     IO.inspect(counter_value)
   end
-
 end

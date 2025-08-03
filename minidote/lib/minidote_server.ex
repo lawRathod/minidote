@@ -290,24 +290,36 @@ defmodule Minidote.Server do
 
         crdt_module = get_crdt_module(key)
 
-        # Get or initialize CRDT state
-        {crdt_state, version} =
-          case Map.get(acc_state.objects, key) do
-            nil -> {crdt_module.new(), 0}
-            existing -> existing
-          end
+        # Check if this operation requires state
+        operation_with_arg = if arg == nil, do: operation, else: {operation, arg}
+        requires_state = crdt_module.require_state_downstream(operation_with_arg)
 
         # Generate downstream effect
         downstream_result =
-          case arg do
-            nil -> crdt_module.downstream(operation, crdt_state)
-            _ -> crdt_module.downstream({operation, arg}, crdt_state)
+          if requires_state do
+            # Fetch state for operations that need it
+            {crdt_state, _version} =
+              case Map.get(acc_state.objects, key) do
+                nil -> {crdt_module.new(), 0}
+                existing -> existing
+              end
+            crdt_module.downstream(operation_with_arg, crdt_state)
+          else
+            # Skip state fetch for stateless operations
+            crdt_module.downstream(operation_with_arg, crdt_module.new())
           end
 
         case downstream_result do
           {:ok, effect} ->
+            # Always fetch current state and version for update
+            {current_state, version} =
+              case Map.get(acc_state.objects, key) do
+                nil -> {crdt_module.new(), 0}
+                existing -> existing
+              end
+
             # Apply effect locally
-            {:ok, new_crdt_state} = crdt_module.update(effect, crdt_state)
+            {:ok, new_crdt_state} = crdt_module.update(effect, current_state)
 
             # Update state
             new_version = version + 1
